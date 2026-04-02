@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: openclaw-mongo
+    ports:
+      - "27017:27017" # Map พอร์ตในเครื่อง ให้ตรงกับพอร์ตของ Docker
+    volumes:
+      - mongodb_data:/data/db # เก็บบันทึกข้อมูลไว้ในเครื่องเรา (ถ้าปิดเบราว์เซอร์หรือรีสตาร์ท ข้อมูลจะไม่หาย)
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
